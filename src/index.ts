@@ -1,22 +1,30 @@
+import { WorkerEntrypoint } from "cloudflare:workers";
+
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		const url = new URL(request.url);
+  async fetch(request, env, ctx): Promise<Response> {
+    const url = new URL(request.url);
 
-		// Only handle requests starting with /api/
-		if (url.pathname.startsWith('/api/')) {
-			switch (url.pathname) {
-				case '/api/message':
-					return new Response('Hello from Workers API!');
-				case '/api/random':
-					return new Response(crypto.randomUUID());
-				default:
-					return new Response('API Endpoint Not Found', { status: 404 });
-			}
-		}
+    // 1. API Handling (Dynamic)
+    if (url.pathname.startsWith("/api/")) {
+      try {
+        // Example: Route to specific handlers
+        if (url.pathname === "/api/health") {
+          return new Response(JSON.stringify({ status: "healthy" }), {
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+        
+        // Add your DB calls here (e.g., env.DB.prepare(...))
+        
+        return new Response("Endpoint not found", { status: 404 });
+      } catch (err) {
+        console.error(err);
+        return new Response("Internal Error", { status: 500 });
+      }
+    }
 
-		// For non-API requests, we return 404 here.
-		// The 'assets' binding with 'not_found_handling: single-page-application'
-		// will automatically catch this 404 (if no asset matches) and serve index.html.
-		return new Response('Not Found', { status: 404 });
-	},
+    // 2. Static Asset Handling (SPA)
+    // This automatically handles index.html fallback for client-side routing
+    return env.ASSETS.fetch(request);
+  },
 } satisfies ExportedHandler<Env>;

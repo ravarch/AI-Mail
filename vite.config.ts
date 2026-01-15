@@ -1,12 +1,11 @@
 import { cloudflare } from "@cloudflare/vite-plugin";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react(), cloudflare(), tailwindcss(), viteSingleFile()],
+  plugins: [react(), cloudflare(), tailwindcss()],
   build: {
-    minify: false
+    minify: true, // Enable minification for production
   }
 });

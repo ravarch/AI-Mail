@@ -6,6 +6,14 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react(), cloudflare(), tailwindcss()],
   build: {
-    minify: true, // Enable minification for production
+    target: "es2022", // Optimized for modern edge browsers
+    minify: "esbuild",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'], // Separate React into its own cacheable chunk
+        },
+      },
+    },
   }
 });

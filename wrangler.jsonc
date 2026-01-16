@@ -1,29 +1,39 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "react-spa",
+  "name": "mailbox",
   "main": "src/index.ts",
   "compatibility_date": "2024-09-23",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  
-  // 1. Performance: Smart Placement
-  // Moves the Worker closer to your backend data (database/external API)
-  // to reduce round-trip latency for data-heavy requests.
-  "placement": {
-    "mode": "smart"
-  },
+  "compatibility_flags": ["nodejs_compat"],
 
-  // 2. Hosting: Static Assets (Hybrid Architecture)
-  // Serves the React frontend from the high-performance global CDN.
+  // 1. Hosting & Assets
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    // 3. Routing: SPA Support
-    // Automatically serves index.html for unknown client-side routes (e.g., /about)
     "not_found_handling": "single-page-application"
   },
 
+  // 2. Storage: The Vault
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mail-db",
+      "database_id": "27745d34-63cb-40c9-981b-98ff02059835"
+    }
+  ],
+
+  // 3. Intelligence: The Brain
+  "ai": {
+    "binding": "AI"
+  },
+
+  // 4. Email Capabilities
+  // ENABLE "Email Routing" in dashboard first!
+  "send_email": [
+    {
+      "name": "EMAIL_SENDER" // Binding for sending outbound mail
+    }
+  ],
+  
   "observability": {
     "enabled": true
   }

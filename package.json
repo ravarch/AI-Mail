@@ -28,6 +28,7 @@
 		"@tailwindcss/vite": "^4.1.18",
 		"hono": "^4.6.1",
 		"react": "^19.2.3",
+		"mimetext": "^3.0.22",
 		"react-dom": "^19.2.3",
 		"lucide-react": "^0.469.0",
 		"framer-motion": "^11.15.0",

@@ -15,7 +15,8 @@
     {
       "binding": "DB",
       "database_name": "mail-db",
-      "database_id": "27745d34-63cb-40c9-981b-98ff02059835"
+      "database_id": "27745d34-63cb-40c9-981b-98ff02059835" 
+      // ^ ENSURE THIS ID MATCHES YOUR ACTUAL D1 DATABASE ID
     }
   ],
   "r2_buckets": [
@@ -62,8 +63,8 @@
   "ai": { "binding": "AI" },
   "send_email": [{ "name": "EMAIL_SENDER" }],
 
-  // ADDED THIS:
   "vars": {
-    "DOMAIN": "drkingbd.cc"
+    "DOMAIN": "drkingbd.cc",
+    "JWT_SECRET": "replace-with-a-secure-random-string"
   }
 }

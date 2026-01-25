@@ -1,36 +1,45 @@
 import React from 'react';
+import { Send, ExternalLink } from 'lucide-react';
 
-export const TelegramBanner = () => {
+export const TelegramBanner = ({ compact = false }: { compact?: boolean }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto my-12 group">
-      <div className="relative overflow-hidden p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-cyan-400 to-sky-500 shadow-xl transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
-        <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-20 transition-opacity"></div>
-        <div className="relative flex flex-col md:flex-row items-center justify-between p-8 bg-white rounded-xl">
-          
-          <div className="flex items-center gap-6 mb-6 md:mb-0">
-            {/* Animated Icon */}
-            <div className="w-16 h-16 flex-shrink-0 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center text-3xl shadow-inner">
-              <svg className="w-8 h-8 transform -rotate-12 group-hover:rotate-0 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.28l15.93-6.15c.73-.27 1.37.16 1.14 1.13l-2.71 12.8c-.2.92-1.23 1.15-2.02.72l-5.5-4.04-2.65 2.53c-.29.29-.53.54-1.09.54z"/>
-              </svg>
+    <a
+      href="https://t.me/drkingbd"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group block w-full relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1
+        ${compact ? 'bg-gradient-to-br from-[#0088cc] to-[#006699] p-4' : 'bg-white p-1'}`}
+    >
+      {!compact ? (
+        // Full Banner Design
+        <div className="relative bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 rounded-xl p-0.5">
+          <div className="bg-white rounded-[10px] p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 group-hover:scale-110 transition-transform">
+                <Send size={24} className="-ml-1 mt-1" />
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="font-bold text-slate-800 text-lg">Join DrKingBD Community</h3>
+                <p className="text-slate-500 text-sm">Get premium tools, updates & support</p>
+              </div>
             </div>
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold text-gray-800">Community Support</h3>
-              <p className="text-gray-500 font-medium">Join 5,000+ developers on Telegram</p>
+            <div className="px-6 py-2 bg-[#0088cc] text-white rounded-full font-semibold text-sm flex items-center gap-2 group-hover:bg-[#0077b5] transition-colors">
+              Join Channel <ExternalLink size={14} />
             </div>
           </div>
-
-          <a
-            href="https://t.me/CyberCoderBD"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 bg-[#229ED9] hover:bg-[#1CA0D6] text-white text-lg font-bold rounded-full shadow-lg shadow-blue-200 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            <span>Join Now</span>
-            <span className="text-xl">→</span>
-          </a>
         </div>
-      </div>
-    </div>
+      ) : (
+        // Compact/Mobile Sidebar Design
+        <div className="flex items-center gap-3 text-white">
+          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+             <Send size={16} className="-ml-0.5 mt-0.5" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="font-bold text-sm truncate">DrKingBD Official</p>
+            <p className="text-xs text-blue-100 truncate">Join for updates</p>
+          </div>
+        </div>
+      )}
+    </a>
   );
 };

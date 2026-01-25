@@ -107,7 +107,7 @@ export default function App() {
                   AI Secure Mail
                 </h1>
                 <p className="text-slate-400">
-                  Professional, ephemeral email service powered by Cloudflare AI.
+                  Professional, ephemeral email service powered by AI.
                 </p>
               </div>
               

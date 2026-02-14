@@ -2,6 +2,12 @@
 
 A modern, serverless, AI-powered email service built on **Cloudflare Workers**, **React 19**, and **Hono**. This application allows users to generate secure email identities, receive emails in real-time via WebSockets, and get instant content summaries via Llama-3.
 
+<div align="center">
+  <a href="https://t.me/CyberCoderBD">
+    <img src="public/e31obpe31obpe31o.jpg" alt="Join our Telegram Channel" width="600">
+  </a>
+</div>
+
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-Workers-orange?logo=cloudflare)
